@@ -84,6 +84,14 @@ void add_seconds()
 	}
 }
 
+void print_alarm(Time alarm)
+{
+	if(alarma.horas == horas &&
+		alarma.minutos == minutos &&
+		alarma.segundos == segundos)
+	PRINTF("ALARM\r\n");
+}
+
 void SysTick_DelayTicks()
 {
     static uint32_t systickCounter = 0;
@@ -125,10 +133,7 @@ int main(void)
 	  add_seconds();
 	  	PRINTF("%02d:%02d:%02d\r\n", horas, minutos, segundos);
 
-	  	if(alarma.horas == horas &&
-	  			alarma.minutos == minutos &&
-	  				alarma.segundos == segundos)
-	  		PRINTF("ALARM\r\n");
+	  	print_alarm(alarma);
 
 	  	one_second_flag = false;
 	  }
